@@ -8,7 +8,11 @@ Lightweight utils that make it easier to build agents with GPT.
 
 You can define a tool using a Zod schema and a callback function. The callback can optionally be async.
 
+See [`examples/tools/getCurrentWeather.ts`](examples/tools/getCurrentWeather.ts) for more details.
+
 ```ts
+import { type Tool } from "gpt-agent-utils";
+
 const schema = z.object({
   location: z.string().describe("The city and state, e.g. San Francisco, CA"),
   unit: z.enum(["celsius", "fahrenheit"]).optional(),
@@ -39,7 +43,11 @@ const tool: Tool = {
 
 You can use `generateFunctions` to convert tools into the format OpenAI expects, then use `handleFunctionCall` to parse the response from GPT and run the appropriate callback.
 
+See [`examples/index.ts`](examples/index.ts) for more details.
+
 ```ts
+import { generateFunctions, handleFunctionCall } from "gpt-agent-utils";
+
 const tools = [getCurrentWeather];
 
 const response = await openai.chat.completions.create({
