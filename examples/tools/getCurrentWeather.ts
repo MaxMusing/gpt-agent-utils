@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Tool } from "../../src";
+import { type Tool } from "../../src";
 
 const schema = z.object({
   location: z.string().describe("The city and state, e.g. San Francisco, CA"),
