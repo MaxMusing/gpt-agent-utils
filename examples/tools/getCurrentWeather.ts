@@ -8,7 +8,12 @@ const schema = z.object({
 
 // Example dummy function hard coded to return the same weather
 // In production, this could be your backend API or an external API
-function callback({ location, unit = "fahrenheit" }: z.infer<typeof schema>) {
+async function callback({
+  location,
+  unit = "fahrenheit",
+}: z.infer<typeof schema>) {
+  await new Promise((resolve) => setTimeout(resolve, 1));
+
   const weatherInfo = {
     location: location,
     temperature: "72",
