@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "lib": ["ES2016"],
+    "target": "ES2015",
+    "outDir": "dist",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "sourceMap": true
+  },
+  "include": ["src/**/*.ts"]
+}
