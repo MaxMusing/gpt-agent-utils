@@ -6,7 +6,7 @@ Lightweight utils that make it easier to build agents with GPT.
 
 ### Defining a tool
 
-You can define a tool using a Zod schema and a callback function. The callback can optionally be async.
+You can define a [`Tool`](src/types.ts) using a Zod schema and a callback function. The callback can optionally be async.
 
 See [`examples/tools/getCurrentWeather.ts`](examples/tools/getCurrentWeather.ts) for more details.
 
@@ -41,7 +41,7 @@ const tool: Tool = {
 
 ### Using tools
 
-You can use `generateFunctions` to convert tools into the format OpenAI expects, then use `handleFunctionCall` to parse the response from GPT and run the appropriate callback.
+You can use [`generateFunctions`](src/generateFunctions.ts) to convert tools into the format OpenAI expects, then use [`handleFunctionCall`](src/handleFunctionCall.ts) to parse the response from GPT and run the appropriate callback.
 
 See [`examples/index.ts`](examples/index.ts) for more details.
 
