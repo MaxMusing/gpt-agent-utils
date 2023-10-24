@@ -2,7 +2,9 @@
 
 Lightweight utils that make it easier to build agents with GPT.
 
-## Usage
+## Tools
+
+Tools are functions that you can define that give GPT the ability to take certain actions beyond generating text. These can be used for fetching or mutating data from external systems, or for performing more complex computations.
 
 ### Defining a tool
 
@@ -18,10 +20,7 @@ const schema = z.object({
   unit: z.enum(["celsius", "fahrenheit"]).optional(),
 });
 
-function callback({
-  location,
-  unit = "fahrenheit",
-}: z.infer<typeof schema>) {
+function callback({ location, unit = "fahrenheit" }: z.infer<typeof schema>) {
   const weatherInfo = {
     location: location,
     temperature: "72",
@@ -43,7 +42,7 @@ const tool: Tool = {
 
 You can use [`generateFunctions`](src/generateFunctions.ts) to convert tools into the format OpenAI expects, then use [`handleFunctionCall`](src/handleFunctionCall.ts) to parse the response from GPT and run the appropriate callback.
 
-See [`examples/index.ts`](examples/index.ts) for more details.
+See [`examples/kitchenSink.ts`](examples/kitchenSink.ts) for more details.
 
 ```ts
 import { generateFunctions, handleFunctionCall } from "gpt-agent-utils";
@@ -62,4 +61,26 @@ if (response.choices[0].message.function_call) {
     tools,
   });
 }
+```
+
+## Context management
+
+GPT has a limited context window, so you need to selectively limit what context gets passed for each call.
+
+### Truncating messages
+
+You can use [`truncateMessages`](src/truncateMessages.ts) to select the most recent messages that fit within a provided token limit. This is useful for implementing a simple sliding window memory.
+
+See [`examples/kitchenSink.ts`](examples/kitchenSink.ts) for more details.
+
+```ts
+import { generateFunctions, truncateMessages } from "gpt-agent-utils";
+
+const tools = [getCurrentWeather];
+
+const response = await openai.chat.completions.create({
+  model: "gpt-3.5-turbo",
+  messages: truncateMessages({ messages, tools, tokenLimit: 1000 }),
+  functions: generateFunctions(tools),
+});
 ```

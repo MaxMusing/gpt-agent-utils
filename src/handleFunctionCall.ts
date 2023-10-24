@@ -2,7 +2,10 @@ import OpenAI from "openai";
 import { Tool } from "./types";
 
 /**
- * Handles a function call from OpenAI by running the callback.
+ * Handles a function call from OpenAI by running the callback and forming a
+ * message response to pass back to OpenAI.
+ * @param param.functionCall Function call response from OpenAI.
+ * @param param.tools Tools being used in your chat.
  * @returns Message which can be passed to OpenAI in the `messages` parameter
  */
 export async function handleFunctionCall({
