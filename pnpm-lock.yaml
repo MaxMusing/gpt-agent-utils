@@ -22,6 +22,9 @@ devDependencies:
   openai:
     specifier: ^4.12.4
     version: 4.12.4
+  sandbox:
+    specifier: ^0.8.6
+    version: 0.8.6
   ts-node:
     specifier: ^10.9.1
     version: 10.9.1(@types/node@20.8.7)(typescript@5.2.2)
@@ -272,6 +275,11 @@ packages:
       web-streams-polyfill: 3.2.1
     transitivePeerDependencies:
       - encoding
+    dev: true
+
+  /sandbox@0.8.6:
+    resolution: {integrity: sha512-an4w7U9vrzSgHt29GcKfmcqFxthhunbaptLxr9bUH3FNbtG1Ddrr9mDHzNWMLKRpEplGPh7x06RPuOTjq7LUCg==}
+    engines: {'0': node >=0.5.0}
     dev: true
 
   /tr46@0.0.3:

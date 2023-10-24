@@ -6,28 +6,18 @@ const schema = z.object({
   unit: z.enum(["celsius", "fahrenheit"]).optional(),
 });
 
-// Example dummy function hard coded to return the same weather
-// In production, this could be your backend API or an external API
-async function callback({
-  location,
-  unit = "fahrenheit",
-}: z.infer<typeof schema>) {
-  await new Promise((resolve) => setTimeout(resolve, 1));
-
+function callback({ location, unit = "fahrenheit" }: z.infer<typeof schema>) {
   const weatherInfo = {
     location: location,
-    temperature: "72",
-    unit: unit,
-    forecast: ["sunny", "windy"],
+    temperature: `62 °${unit === "celsius" ? "C" : "F"}`,
+    windSpeed: "20 mph",
   };
   return JSON.stringify(weatherInfo);
 }
 
-const tool: Tool = {
+export const getCurrentWeather: Tool = {
   name: "get_current_weather",
-  description: "Get the current weather in a given location",
+  description: "Get the current temperature and wind speed in a given location",
   schema,
   callback,
 };
-
-export default tool;

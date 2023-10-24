@@ -2,6 +2,8 @@
 
 Lightweight utils that make it easier to build agents with GPT.
 
+See [`examples/agent.ts`](examples/agent.ts) for a full example of an agent implemented in 35 lines of code.
+
 ## Tools
 
 Tools are functions that you can define that give GPT the ability to take certain actions beyond generating text. These can be used for fetching or mutating data from external systems, or for performing more complex computations.
@@ -10,7 +12,7 @@ Tools are functions that you can define that give GPT the ability to take certai
 
 You can define a [`Tool`](src/types.ts) using a Zod schema and a callback function. The callback can optionally be async.
 
-See [`examples/tools/getCurrentWeather.ts`](examples/tools/getCurrentWeather.ts) for more details.
+See [`examples/tools/getCurrentWeather.ts`](examples/tools/getCurrentWeather.ts) for a full example.
 
 ```ts
 import { type Tool } from "gpt-agent-utils";
@@ -42,8 +44,6 @@ const tool: Tool = {
 
 You can use [`generateFunctions`](src/generateFunctions.ts) to convert tools into the format OpenAI expects, then use [`handleFunctionCall`](src/handleFunctionCall.ts) to parse the response from GPT and run the appropriate callback.
 
-See [`examples/kitchenSink.ts`](examples/kitchenSink.ts) for more details.
-
 ```ts
 import { generateFunctions, handleFunctionCall } from "gpt-agent-utils";
 
@@ -70,8 +70,6 @@ GPT has a limited context window, so you need to selectively limit what context 
 ### Truncating messages
 
 You can use [`truncateMessages`](src/truncateMessages.ts) to select the most recent messages that fit within a provided token limit. This is useful for implementing a simple sliding window memory.
-
-See [`examples/kitchenSink.ts`](examples/kitchenSink.ts) for more details.
 
 ```ts
 import { generateFunctions, truncateMessages } from "gpt-agent-utils";
