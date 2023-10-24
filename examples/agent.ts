@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import { getCurrentWeather } from "./tools/getCurrentWeather";
-import { runJavaScriptCode } from "./tools/runJavaScriptCode";
+import { runJavascriptCode } from "./tools/runJavascriptCode";
 import {
   handleFunctionCall,
   generateFunctions,
@@ -17,7 +17,7 @@ async function runConversation() {
     },
   ];
 
-  const tools = [getCurrentWeather, runJavaScriptCode];
+  const tools = [getCurrentWeather, runJavascriptCode];
   const maximumDepth = 5;
 
   for (let i = 0; i < maximumDepth; i++) {

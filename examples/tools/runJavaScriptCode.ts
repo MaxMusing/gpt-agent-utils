@@ -6,7 +6,7 @@ const schema = z.object({
   code: z.string().describe("JavaScript code to run"),
 });
 
-async function callback({ code }: z.infer<typeof schema>) {
+function callback({ code }: z.infer<typeof schema>) {
   return new Promise<string>((resolve) => {
     const sandbox = new Sandbox();
 
@@ -16,7 +16,7 @@ async function callback({ code }: z.infer<typeof schema>) {
   });
 }
 
-export const runJavaScriptCode: Tool = {
+export const runJavascriptCode: Tool = {
   name: "run_javascript_code",
   description: "Runs JavaScript code and returns the result",
   schema,
