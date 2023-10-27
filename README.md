@@ -2,6 +2,8 @@
 
 Lightweight utils that make it easier to build agents with GPT.
 
+The goal of this project is to provide simple tools that let you retain total flexibility in implementing your own agent, rather than providing an opinionated framework that locks you into its ecosystem.
+
 See [`examples/agent.ts`](examples/agent.ts) for a full example of an agent implemented in 35 lines of code.
 
 ## Usage
