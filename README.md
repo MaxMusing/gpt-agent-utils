@@ -2,9 +2,9 @@
 
 Lightweight utils that make it easier to build agents with GPT.
 
-The goal of this project is to provide simple tools that let you retain total flexibility in implementing your own agent, rather than providing an opinionated framework that locks you into its ecosystem.
+The goal of this project is to provide simple tools that give you total flexibility to implement your own agent, rather than forcing you into an opinionated framework.
 
-See [`examples/agent.ts`](examples/agent.ts) for a full example of an agent implemented in 35 lines of code.
+See [`examples/agent.ts`](examples/agent.ts) for a full example of an agent implemented in <50 lines of code.
 
 ## Usage
 
@@ -87,7 +87,7 @@ GPT has a limited context window, so you need to selectively limit what context 
 
 ### Truncating messages
 
-You can use [`truncateMessages`](src/truncateMessages.ts) to select the most recent messages that fit within a provided token limit. This is useful for implementing a simple sliding window memory.
+You can use [`truncateMessages`](src/truncateMessages.ts) to select the most recent messages that fit within a provided token limit.
 
 ```ts
 import { generateFunctions, truncateMessages } from "gpt-agent-utils";

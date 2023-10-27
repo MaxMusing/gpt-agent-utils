@@ -3,16 +3,15 @@ import { type Tool } from "../../src";
 
 const schema = z.object({
   location: z.string().describe("The city and state, e.g. San Francisco, CA"),
-  unit: z.enum(["celsius", "fahrenheit"]).optional(),
 });
 
-function callback({ location, unit = "fahrenheit" }: z.infer<typeof schema>) {
-  const weatherInfo = {
+function callback({ location }: z.infer<typeof schema>) {
+  // This would normally be an API call
+  return JSON.stringify({
     location: location,
-    temperature: `62 °${unit === "celsius" ? "C" : "F"}`,
-    windSpeed: "20 mph",
-  };
-  return JSON.stringify(weatherInfo);
+    temperature: "42 °F",
+    windSpeed: "30 mph",
+  });
 }
 
 export const getCurrentWeather: Tool = {
