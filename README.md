@@ -4,6 +4,22 @@ Lightweight utils that make it easier to build agents with GPT.
 
 See [`examples/agent.ts`](examples/agent.ts) for a full example of an agent implemented in 35 lines of code.
 
+## Usage
+
+This project doesn't have any official releases yet. If you want to try it, you have two options:
+
+1. Build from source
+
+```
+pnpm run build
+```
+
+2. Install from repo
+
+```
+npm i git+https://github.com/MaxMusing/gpt-agent-utils.git
+```
+
 ## Tools
 
 Tools are functions that you can define that give GPT the ability to take certain actions beyond generating text. These can be used for fetching or mutating data from external systems, or for performing more complex computations.
