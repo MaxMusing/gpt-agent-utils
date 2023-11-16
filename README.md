@@ -1,5 +1,7 @@
 # gpt-agent-utils
 
+> ⚠️ Most of this functionality has now been built into OpenAI's official libraries, so this library will not be maintained or expanded further.
+
 Lightweight utils that make it easier to build agents with GPT.
 
 The goal of this project is to provide simple tools that give you total flexibility to implement your own agent, rather than forcing you into an opinionated framework.
